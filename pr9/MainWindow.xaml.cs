@@ -26,36 +26,36 @@ namespace pr9
         {
             InitializeComponent();
             peoples = new ObservableCollection<Person>();
-             dataGridPeople.ItemsSource = peoples;
-
-
-            
         }
         private void ShowData_Click(object sender, RoutedEventArgs e)
         {
-            // Явный конструктор
-            Person person1 = new Person("Иванов Иван Иванович", "Мужской", "Программист", 5, 100000m);
-            ShowPersonInfo(person1);
+             // Явный конструктор
+  Person person1 = new Person("Галкина Ирина Игоревна", "Женский", "Стриптезерша", 2, 100000m);
+  ShowPersonInfo(person1);
 
-
-            // Неявный конструктор (значения по умолчанию)
-            Person person2 = new Person(); // все поля будут пустыми
-            ShowPersonInfo(person2, "Person 2 (Неявный конструктор):");
-
-
-            // Заполнение person2
-            person2.fio = "Петрова Анна Сергеевна";
-            person2.Gender = "Женский";
-            person2.doljnost = "Дизайнер";
-            person2.staj = 3;
-            person2.oklad = 80000m;
-            ShowPersonInfo(person2, "Person 2 (после заполнения):");
-
-
-            // Добавление в DataGrid
-            peoples.Add(person1);
-            peoples.Add(person2);
-
+  // // Неявный конструктор (значения по умолчанию)
+  // Person person2 = new Person(); // все поля будут пустыми
+  // // Заполнение person2
+  // person2.fio = "Байков Дмитрий Евгеньевич";
+  // person2.Gender = "Мужской";
+  // person2.doljnost = "Поломойка";
+  // person2.staj = 19;
+  // person2.oklad = 2000m;
+  // ShowPersonInfo(person2, "Person 2 :");
+  Person person2 = new Person("Байков Дмитрий Евгеньевич", "Женский", "Поломойка", 18, 2000m);
+  ShowPersonInfo(person2);
+  Person person3 = new Person("Сухомяткина Ксения Игоревна", "Женский", "Стриптизерша",1, 80000m);
+  ShowPersonInfo(person3);
+  Person person4 = new Person("Исаев Арсений Вячеславович", "Мужской", "Фейс-контролер", 3, 15000m);
+  ShowPersonInfo(person4);
+  Person person5 = new Person("Дудина Екатерина Андеевна"  , "Женский", "Бармен", 5, 200000m);
+  ShowPersonInfo(person5);
+  Person person6 = new Person("Печников Роман Анжреевич", "Мужской", "заводила)", 10, 15000000000m);
+  ShowPersonInfo(person6);
+  Person person7 = new Person("Бандуркин Дмитрий Дмитриевич", "Мужской", "Рекламный менеджер", 5, 5000m);
+  ShowPersonInfo(person7);
+  Person person8 = new Person("Попов Глеб Евгеньевич", "Мужской", "БАРЫГА)))", 10, 5000000m);
+  ShowPersonInfo(person8);
         }
 
         private void ShowPersonInfo(Person person, string prefix = "")
