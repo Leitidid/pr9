@@ -14,15 +14,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="txtOutput" TextWrapping="Wrap" Margin="10" Grid.Row="0"/>
-        <DataGrid x:Name="dataGridPeople" AutoGenerateColumns="False" Grid.Row="1" Margin="93,118,-73,-38" Grid.RowSpan="3">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding fio}"/>
-                <DataGridTextColumn Header="Пол" Binding="{Binding Gender}"/>
-                <DataGridTextColumn Header="Должность" Binding="{Binding doljnost}"/>
-                <DataGridTextColumn Header="Стаж" Binding="{Binding staj}"/>
-                <DataGridTextColumn Header="Оклад" Binding="{Binding oklad:C}"/>
-            </DataGrid.Columns>
-        </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,10,10,0">
             <Button Content="Показать данные" Click="ShowData_Click" Margin="0,0,10,0"/>
         </StackPanel>
