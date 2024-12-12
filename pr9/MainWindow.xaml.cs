@@ -20,7 +20,10 @@ namespace pr9
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Person> peoples;
+        private ObservableCollection<Person> peoples;//Это коллекция, которая будет хранить
+                                                     //информацию о людях.Она используется для привязки данных
+                                                     //к интерфейсу. ObservableCollection используется,
+                                                     //потому что если данные в ней изменятся, WPF автоматически обновит отображение.
 
         public MainWindow()
         {
@@ -29,34 +32,39 @@ namespace pr9
         }
         private void ShowData_Click(object sender, RoutedEventArgs e)
         {
-             // Явный конструктор
-  Person person1 = new Person("Галкина Ирина Игоревна", "Женский", "Стриптезерша", 2, 100000m);
-  ShowPersonInfo(person1);
-
-  // // Неявный конструктор (значения по умолчанию)
-  // Person person2 = new Person(); // все поля будут пустыми
-  // // Заполнение person2
-  // person2.fio = "Байков Дмитрий Евгеньевич";
-  // person2.Gender = "Мужской";
-  // person2.doljnost = "Поломойка";
-  // person2.staj = 19;
-  // person2.oklad = 2000m;
-  // ShowPersonInfo(person2, "Person 2 :");
-  Person person2 = new Person("Байков Дмитрий Евгеньевич", "Женский", "Поломойка", 18, 2000m);
-  ShowPersonInfo(person2);
-  Person person3 = new Person("Сухомяткина Ксения Игоревна", "Женский", "Стриптизерша",1, 80000m);
-  ShowPersonInfo(person3);
-  Person person4 = new Person("Исаев Арсений Вячеславович", "Мужской", "Фейс-контролер", 3, 15000m);
-  ShowPersonInfo(person4);
-  Person person5 = new Person("Дудина Екатерина Андеевна"  , "Женский", "Бармен", 5, 200000m);
-  ShowPersonInfo(person5);
-  Person person6 = new Person("Печников Роман Анжреевич", "Мужской", "заводила)", 10, 15000000000m);
-  ShowPersonInfo(person6);
-  Person person7 = new Person("Бандуркин Дмитрий Дмитриевич", "Мужской", "Рекламный менеджер", 5, 5000m);
-  ShowPersonInfo(person7);
-  Person person8 = new Person("Попов Глеб Евгеньевич", "Мужской", "БАРЫГА)))", 10, 5000000m);
-  ShowPersonInfo(person8);
+            // Явный конструктор
+            Person person1 = new Person("Галкина Ирина Игоревна", "Женский", "Стриптезерша", 2, 100000m);
+            ShowPersonInfo(person1);
+            Person person2 = new Person("Байков Дмитрий Евгеньевич", "Женский", "Поломойка", 18, 2000m);
+            ShowPersonInfo(person2);
+            Person person3 = new Person("Сухомяткина Ксения Игоревна", "Женский", "Стриптизерша", 1, 80000m);
+            ShowPersonInfo(person3);
+            Person person4 = new Person("Исаев Арсений Вячеславович", "Мужской", "Фейс-контролер", 3, 15000m);
+            ShowPersonInfo(person4);
+            Person person5 = new Person("Дудина Екатерина Андеевна", "Женский", "Бармен", 5, 200000m);
+            ShowPersonInfo(person5);
+            Person person6 = new Person("Печников Роман Анжреевич", "Мужской", "заводила)", 10, 150000m);
+            ShowPersonInfo(person6);
+            Person person7 = new Person("Бандуркин Дмитрий Дмитриевич", "Мужской", "Рекламный менеджер", 5, 150000m);
+            ShowPersonInfo(person7);
+            Person person8 = new Person("Попов Глеб Евгеньевич", "Мужской", "БАРЫГА)))", 10, 30000m);
+            ShowPersonInfo(person8);
+            List<Person> allPersons = new List<Person>() { person1, person2, person3, person4, person5, person6, person7, person8 };
+            //List <T> Создает динамический массив. Обеспечивает такие же 
+            //функциональные возможности, как и необобщенный класс ArrayList
+            //<T> указывают, что класс является 
+            //обобщенным, а тип T, заключенный в угловые скобки, будет использоваться этим
+            //классом.
+            if (allPersons.Count == 0)
+            {
+                MessageBox.Show("нет данных для расчета");
+                return;
+            }
+            decimal sumofOklad = allPersons.Sum(person => person.oklad);
+            decimal okladik = sumofOklad / allPersons.Count;
+            txtOkadika.Text = "Средний оклад" + okladik;
         }
+
 
         private void ShowPersonInfo(Person person, string prefix = "")
         {
@@ -65,19 +73,23 @@ namespace pr9
             sb.AppendLine($"{prefix} Пол: {person.Gender}");
             sb.AppendLine($"{prefix} Должность: {person.doljnost}");
             sb.AppendLine($"{prefix} Стаж: {person.staj}");
-            sb.AppendLine($"{prefix} Оклад: {person.oklad:C}");
-            txtOutput.Text += sb.ToString() + Environment.NewLine;
+            sb.AppendLine($"{prefix} Оклад: {person.oklad:C}");//:с валюта
+            txtOutput.Text += sb.ToString() + Environment.NewLine; //Environment.NewLine добавляет перевод строки.
 
         }
 
-        private void BtnAbout_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ФИО разработчика: [Ваше ФИО]\nНомер работы: [Номер работы]\nФормулировка задания: [Формулировка задания]", "О программе");
+            string developer = "Дудина Екатерина";
+            int job = 9;
+            string task = " Заполнить таблицу со списком сотрудников на 7 человек с полями: ФИО, пол, \r\nдолжность, стаж работы, оклад. Вывести результат на экран. Вывести средний \r\nоклад.\r\n";
+            MessageBox.Show($"Разработчик: {developer}\nНомер работы: {job}\nЗадание: {task}", "О программе");
         }
-
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        // "Выход"
+        private void MenuItem_Exit(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }
+
