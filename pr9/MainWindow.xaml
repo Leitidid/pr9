@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pr9"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="800">
+        Title="Стрип-бар Катюша" Height="700" Width="800" Icon="/13c4c7c7-8461-4e36-9f13-c275b2666fd0.jpg">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="98.04"/>
